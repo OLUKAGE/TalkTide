@@ -21,7 +21,6 @@
 
     <div class="tyn-root" style="margin-left: 60px;">
     
-      
         <!-- top Bar -->
         <nav class="tyn-appbar d-flex align-items-center justify-content-between">
             <!-- Logo -->
@@ -311,7 +310,7 @@
                                         <li>
                                             <a href="profile.html#profile-settings">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 2.246 0 0 1-4.492 0" />
                                                     <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
                                                 </svg><!-- gear -->
                                                 <span>Settings</span>
@@ -343,26 +342,47 @@
 
         <!-- New Meet Section -->
         <div class="meet-section">
-            <h1 style="position: relative; left: 100px; top: 60px; font-size: 2.5rem; color: #635bfa; font-weight: 600; margin-bottom: 32px;">Talk</h1>
 
-            <div style="margin: 120px 0px 0px 100px; background: #dbeafe; border-radius: 15px; display: flex; align-items: center; padding: 30px; width: calc(100% - 200px);">
-
-                <div style="display: flex; gap: 30px; width: 100%;">
-                    <button style="flex: 1; background: #635bfa; color:  #fff; border: 1.5px solid #444; border-radius: 16px; padding: 24px 0; font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 12px;">
-                    <span style="font-size: 1.5rem;">🔗</span>
-                    Create a meeting link
+            <div id="new-call" class="call-block">
+                <div class="call-btn-row">
+                    <button id="start-btn" class="call-btn primary">
+                        <span style="font-size: 1.5rem;">📽️</span>
+                        Start a meeting
                     </button>
-                    
-                    <button style="flex: 1; background: transparent; color: #635bfa; border: 3px solid #444; border-radius: 16px; padding: 24px 0; font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 12px;">
-                    <span style="font-size: 1.5rem;">🆔</span>
-                    Join with a meeting ID
+                    <button id="join-btn" class="call-btn secondary">
+                        <span style="font-size: 1.5rem;">🆔</span>
+                        Join a meeting 
                     </button>
                 </div>
-                    
+            </div>
+            
+            <div id="stream-wrapper" class="call-block">
+                <div id="call-history" style="width:100%;"></div>
+                <div id="video-streams" style="display:none;"></div>
+            </div>    
+
+            <div id="stream-controls" class="call-block">
+                <div class="call-btn-row">
+                    <button id="share-btn" class="call-btn primary">
+                        <span style="font-size: 1.5rem;">🔗</span>
+                        Share
+                    </button>
+                    <button id="mic-btn" class="call-btn secondary">
+                        <span style="font-size: 1.5rem;">🎙️</span>
+                        Mic on
+                    </button>
+                    <button id="camera-btn" class="call-btn secondary">
+                        <span style="font-size: 1.5rem;">📸</span>
+                        Camera on
+                    </button>
+                    <button id="leave-btn" class="call-btn primary">
+                        <span style="font-size: 1.5rem;">⛔</span>
+                        Leave Stream
+                    </button>
+                </div>
             </div>
 
-            <h1 style="position: relative; left: 102px; top: 50px; font-size: 1.0rem; color: #000000; font-weight: 100; margin-bottom: 25px;">History</h1>
-
+            
         </div>
        
     </div><!-- .tyn-root -->
@@ -479,8 +499,8 @@
                             <li>
                                 <button class="btn btn-icon btn-pill btn-light">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-mute-fill" viewBox="0 0 16 16">
-                                        <path d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4 4 0 0 0 12 8V7a.5.5 0 0 1 1 0zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a5 5 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4m3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3" />
-                                        <path d="M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607m-7.84-9.253 12 12 .708-.708-12-12z" />
+                                    <path d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4 4 0 0 0 12 8V7a.5.5 0 0 1 1 0zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a5 5 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4m3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3" />
+                                    <path d="M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607m-7.84-9.253 12 12 .708-.708-12-12z" />
                                     </svg><!-- mic-mute-fill -->
                                 </button>
                             </li><!-- li -->
@@ -492,7 +512,6 @@
                                 </button>
                             </li><!-- li -->
                         </ul><!-- .tyn-list-inline -->
-                    </div><!-- .tyn-chat-call-stack -->
                 </div><!-- .tyn-chat-call -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
@@ -642,7 +661,7 @@
                 </div><!-- .modal-body -->
                 <button class="btn btn-md btn-icon btn-pill btn-white shadow position-absolute top-0 end-0 mt-n3 me-n3" data-bs-dismiss="modal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                     </svg><!-- x-lg -->
                 </button><!-- modal-close -->
             </div><!-- .modal-content -->
@@ -651,6 +670,8 @@
     <!-- Page Scripts -->
     <script src="assets/js/bundle0ae1.js?v1310"></script>
     <script src="assets/js/app0ae1.js?v1310"></script>
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.23.1.js"></script>
+    <script type="module" src="assets/js/call.js"></script>
 </body>
 
 </html>
