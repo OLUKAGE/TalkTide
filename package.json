@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "agora-rtc-sdk-ng": "^4.23.4",
+    "firebase": "^11.9.1"
+  }
+}
